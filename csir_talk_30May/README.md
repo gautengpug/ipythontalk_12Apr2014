@@ -1,29 +1,53 @@
-### The talk will focus on reproducible interactive computing using Python:
+>The Python Scientific Tool Chain - A growing worldwide phenomena in open and reproducible scientific discovery, computation, research and publication.
 
-* IPython interpreter (REPL)
-* Ipython notebook (Brower based)
-* Setting up a cloud notebook (Web based)
-* Some files for the Python meetup tommorow at 
+# Abstract
+The IPython Notebook is an Open Source, Python web-based interactive computational environment where you can combine code execution, text, mathematics, plots and rich media into a single document.
 
-### Some usefull links
-* Download a complete production ready python stack from the [downloads](http://www.insightstack.co.za/downloads) page. This is very usefull. No broblems installing Numpy, Matplotlib, Pandas etc.
-* Point your browsers to the [following url](http://95.85.29.190:8999/notebooks/python_meetup.ipynb) during the talk and play with. [I will start it up sometime tonight, and give you the password tommorow] [this link will not work for long, so run locally, see note below]
-* Have a look at this [Github repo](http://tooblippe.github.io/zapycon2013_ipython_science/). Most of it is in there.
-* Here is a static view of the [Notebook](http://htmlpreview.github.io/?https://github.com/Tooblippe/zapycon2013_ipython_science/blob/master/src/output/pycon13_ipython.html)
-* Link to the converted workbook as a [Reveal.js](http://htmlpreview.github.io/?https://github.com/Tooblippe/zapycon2013_ipython_science/blob/master/src/output/pycon13_ipython.slides.html#/) presentation.
-* Example of this workbook [converted to PDF](https://github.com/Tooblippe/zapycon2013_ipython_science/blob/master/src/output/pycon13_ipython_complete.pdf?raw=true) and a page or two added automatically. This completed the whole cycle from:
+The IPython notebook with embedded text, code, math and figures. These notebooks are normal files that can be shared with colleagues, converted to other formats such as HTML or PDF, etc. You can share any publicly available notebook by using the IPython Notebook Viewer service which will render it as a static web page. This makes it easy to give your colleagues a document they can read immediately without having to install anything.
 
-<pre>REPL to  Explore to Notebook to Share to Present to Publish</pre>
+# Introduction video
+<iframe width="550" height="350" src="//www.youtube.com/embed/H6dLGQw9yFQ" frameborder="0" allowfullscreen></iframe>
 
+# Talk contents
+The talk will aim to introduce these tools and explore some practical interactive examples. Once completed it will be shown how easy it is to publish your work to various formats. Some of the topics covered in the talk are listed below:
 
+The Complete Talk will be presented using the IPython Notebook.
+the stack - the growing number of critical Python scientific and visualization modules to compete with R, Mathematica and Matlab (and others).
+
+* IPython - quick intro to the IPython interpreter and the notebook
+
+* notebook basics - navigate the notebook
+ 
+* notebook magic’s | special notebook commands that can be very useful
+ 
+* getting input - as from IPython 1.00 getting input from sdtin is possible
+ 
+* local files - how to link to local files in the notebook directory
+ 
+* plotting - how to create beautiful inline plots
+
+* interactive plots - how to interact with data and have real-time updates
+ 
+* symbolic math - quick demo of sympy model
+ 
+* pandas - quick intro to pandas dataframe. An R like data frame for Python
+ 
+* typesetting - include markdown, Latex via MathJax
+ 
+* loading code - how to load a remote .py code file
+ 
+* customising - loading a custom css and custom matplotlib config file
+ 
+* machine learning - using the python machine learning stack.
+ 
+* output formats - how to publish your work to html, pdf or jeveal.js presentation
+ 
+* presenting - present all your work as is in a slide format
+ 
+* other languages - Run Ruby, R, Julia, Octave, (F# experimental)
+ 
+* high performance - We can touch on the IPython Parallel/Cluster computing abilities.
+ 
+* Python is slow? - Look at high performance and C++ integration.
  
 
-### IPython console to play with
-If you do not feel like installing anything find an online IPython console [HERE](https://www.pythonanywhere.com/try-ipython/)
-
-
-### Running the notebook
-download the files and run
-<pre>
-ipython notebook
-</pre>
