@@ -5,9 +5,12 @@
    Author: Fernando Perez <fernando.perez@berkeley.edu>
 */
 
+/*body {background-color:#f8f5de;}*/
+
+
 .talk-title
 {
-  color: #498AF3;
+  color: #333333;
   font-size: 220%;
   font-weight:bold;
   line-height: 1.2;
@@ -16,12 +19,13 @@
 
 .talk-subtitle
 {
-  color: #386BBC;
+  color: #333333;
   font-size: 150%;
   font-weight:bold;
   line-height: 1.2;
   margin: 20px 50px 20px;
   }
+
 
 .slide-header, p.slide-header
 {
@@ -35,26 +39,27 @@
 
 .rendered_html
 {
-  color: #2C5494;
+  color: #333333;
   font-family: Ubuntu;
-  font-size: 170%;
+  font-size: 180%;
   line-height: 1.1;
   margin: 0.5em 0;
   }
+  
 
 .rendered_html h1
 {
-  color: #498AF3;
+  color: blue;
   line-height: 1.2;
   margin: 0.15em 0em 0.5em;
   page-break-before: always;
-  text-align: center;
+  text-align: left;
   }
 
 
 .rendered_html h2
 {
-  color: #386BBC;
+  color: blue;
   line-height: 1.2;
   margin: 1.1em 0em 0.5em;
   }
@@ -92,7 +97,8 @@
 .input_prompt, .CodeMirror-lines, .output_area
 {
   font-family: Consolas;
-  font-size: 120%;
+  font-size: 140%;
+  
   }
 
 .gap-above
