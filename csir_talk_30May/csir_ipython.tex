@@ -1,0 +1,1352 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{csir\_ipython}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}135}]:} \PY{c}{\PYZsh{}Lets just set up our presentation environment}
+          
+          \PY{c}{\PYZsh{} Load a custom CSS and import plotting}
+          \PY{o}{\PYZpc{}}\PY{k}{run} \PY{n}{talktools}\PY{o}{.}\PY{n}{py} \PY{c}{\PYZsh{} add new css and styling as per F. Perez, Pycon 2014 Keynote \PYZhy{} https://github.com/fperez/pycon2014\PYZhy{}keynote}
+          
+          \PY{c}{\PYZsh{} makes sure inline plotting is enabled}
+          \PY{o}{\PYZpc{}}\PY{k}{pylab} \PY{n}{inline} 
+          
+          \PY{c}{\PYZsh{}set figure size}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)} 
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+<IPython.core.display.HTML at 0x107777e50>
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Populating the interactive namespace from numpy and matplotlib
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+WARNING: pylab import has clobbered these variables: ['plotting', 'Circle', 'axes', 'binomial', 'plot', 'det', 'colormaps', 'size', 'beta', 'interactive', 'solve', 'Polygon', 'multinomial', 'test', 'gamma', 'flatten']
+`\%matplotlib` prevents importing * from pylab and numpy
+    \end{Verbatim}
+
+    Introduction to IPython
+
+Open Source and Reproducible Computing
+
+Tobie Nortje
+
+\href{http://www.insightstack.co.za}{wwww.insightstack.co.za},
+\href{http://twitter.com/tooblippe}{@tooblippe}
+
+insightstack
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{insightstack2.png}
+\end{figure}
+
+    \includegraphics{python.png} * Python is an interpreted,
+object-oriented, high-level programming language with dynamic semantics
+* high-level built in data structures * dynamic typing and dynamic
+binding * attractive for Rapid Application Development * use as a
+scripting or glue language to connect existing components together.
+
+\textbar{} \includegraphics{python_companies.png} \textbar{}
+\includegraphics{python_companies2.png}
+\textbar{}\\\textbar{}---\textbar{}---\textbar{}
+
+    \section{IPython - I = Interactive}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  IPython and Ipython notebook is part of the IPython project
+\item
+  Project is one of the key ingredients making up the python scientific
+  stack called SciPy
+\item
+  SciPy is a Python-based ecosystem of open-source software for:
+\item
+  mathematics
+\item
+  science
+\item
+  engineering.
+\item
+  Core packages below
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{scistack.png}
+\caption{SciPy}
+\end{figure}
+
+    \subsection{Quick IPython introdution}
+
+IPython provides a rich architecture for interactive computing with: *
+Powerful \texttt{interactive shells} (terminal and Qt-based). * A
+\texttt{browser-based notebook} with support for code, text,
+mathematical expressions, inline plots and other rich media. * Support
+for \texttt{interactive data visualization} and use of GUI toolkits. *
+Flexible, embeddable interpreters to load into your own projects. * Easy
+to use, high performance tools for parallel computing.
+
+The main reasons I have been using it includes: * A \texttt{superior}
+shell * Plotting is possible in the QT console or the Notebook * the
+\texttt{magic} functions makes life easier (magics gets called with a
+\%, use \%-tab to see them all) * I also use it as a
+\texttt{replacement shell} for Windows Shell or Terminal *
+\texttt{Code Completion} * \texttt{GNU Readline} based editing and
+command history
+
+    \subsection{Some helpfull commands}
+
+The four most helpful commands, as well as their brief description, is
+shown to you in a banner, every time you start IPython:
+
+\begin{longtable}[c]{@{}ll@{}}
+\hline\noalign{\medskip}
+command & description
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+? & Introduction and overview of IPython's features
+\\\noalign{\medskip}
+\%quickref & Quick reference.
+\\\noalign{\medskip}
+help & Python's own help system.
+\\\noalign{\medskip}
+object? & Inspect an object
+\\\noalign{\medskip}
+\hline
+\end{longtable}
+
+\subsubsection{Lets have a look at the terminal version}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{http://ipython.org/_static/screenshots/ipython-terminal.png}
+\caption{terminal}
+\end{figure}
+
+    \subsection{Notebook basics}
+
+The IPython Notebook is a web-based interactive computational
+environment where you can: * combine code execution * text * mathematics
+* plots and rich media into a single document
+
+It also features: * Code Completion * Help and Docstrings * Markdown
+cells * Running a Code cell (Shift+Enter)
+
+\texttt{All you see here is standard Python and Markdown code running in a browser on top of an IPython kernel using Python 2.7}
+
+    \subsection{Run the contents of a cell}
+
+\begin{itemize}
+\item
+  SHIFT+ENTER will run the contents of a cell and move to the next one
+\item
+  CTRL+ENTER run the cell in place and don't move to the next cell.
+  (best for presenting)
+\item
+  CTRL-m h show keyboard shorcuts
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}136}]:} \PY{c}{\PYZsh{} press shift\PYZhy{}enter to run code}
+          \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{4}
+          \PY{n}{b} \PY{o}{=} \PY{l+m+mi}{2}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Hallo CSIR team}\PY{l+s}{\PYZdq{}}
+          \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{a + b =}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{a}\PY{o}{+}\PY{n}{b}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Hallo CSIR team
+a + b = 6
+    \end{Verbatim}
+
+    \subsection{Save the notebook}
+
+CTRL-S will save the notebook
+
+    \subsection{Lets get some help}
+
+The \texttt{\%quickref} commmand can be used to obtain a bit more
+information
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}137}]:} \PY{c}{\PYZsh{}IPython \PYZhy{}\PYZhy{} An enhanced Interactive Python \PYZhy{} Quick Reference Card}
+          \PY{o}{\PYZpc{}}\PY{k}{quickref}  \PY{c}{\PYZsh{} now press shift\PYZhy{}ender}
+\end{Verbatim}
+
+    \subsection{Code completion and introspection}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  The next cell defines a function with a bit of a long name
+\item
+  By using the \texttt{?} command the docstring can we viewed
+\item
+  \texttt{??} will open up the source code
+\item
+  The autocomplete function is also demostrated, and for fun the
+  function is called and the output displayed
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}138}]:} \PY{c}{\PYZsh{} lets degine a function with a long name.}
+          \PY{k}{def} \PY{n+nf}{long\PYZus{}silly\PYZus{}dummy\PYZus{}name}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    This is the docstring for dummy. }
+          \PY{l+s+sd}{    It takes two arguments a and b}
+          \PY{l+s+sd}{    It returns the sum of a and b}
+          \PY{l+s+sd}{    No error checking is done!}
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+              \PY{n}{a} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{5}
+              \PY{n}{b} \PY{o}{*}\PY{o}{=} \PY{l+m+mi}{5}
+              \PY{k}{return} \PY{n}{a}\PY{o}{+}\PY{n}{b}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}139}]:} \PY{c}{\PYZsh{} lets get the docstring or some help}
+          \PY{n}{long\PYZus{}silly\PYZus{}dummy\PYZus{}name}\PY{err}{?}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}140}]:} \PY{c}{\PYZsh{}view the source}
+          \PY{n}{long\PYZus{}silly\PYZus{}dummy\PYZus{}name}\PY{err}{?}\PY{err}{?}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}141}]:} \PY{c}{\PYZsh{}press tab to autocplete}
+          \PY{n}{long\PYZus{}silly\PYZus{}dummy\PYZus{}name}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}141}]:} <function \_\_main\_\_.long\_silly\_dummy\_name>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}142}]:} \PY{c}{\PYZsh{} press shift\PYZhy{}enter to run}
+          \PY{n}{long\PYZus{}silly\PYZus{}dummy\PYZus{}name}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}142}]:}
+    
+    
+        \begin{equation*}
+        40
+        \end{equation*}
+
+    
+
+    \subsection{Using markdown}
+
+You can set the contents type of a cell in the toolbar above. When
+Markdown is selected you can enter markdown in a cell and it's contents
+will be rendered as HTML. The markdown syntax can by
+\href{http://daringfireball.net/projects/markdown/}{found here}
+
+\section{This is heading 1}
+
+\subsection{This is heading 2}
+
+\subsubsection{This is heading 5}
+
+\begin{quote}
+Beautiful is better than ugly. Explicit is better than implicit. Simple
+is better than complex. Complex is better than complicated.
+\end{quote}
+
+    \subsection{Notebook magics}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  IPython has a set of predefined `magic functions' that you can call
+  with a command line style syntax.
+\item
+  There are two kinds of magics, line-oriented and cell-oriented.
+\item
+  Line magics are prefixed with the \texttt{\%} character and work much
+  like OS command-line calls: they get as an argument the rest of the
+  line, where arguments are passed without parentheses or quotes.
+\item
+  Cell magics are prefixed with a double \texttt{\%\%}, and they are
+  functions that get as an argument not only the rest of the line, but
+  also the lines below it in a separate argument.
+\end{itemize}
+
+    \subsubsection{timeit magic}
+
+The \texttt{\%\%timeit} magic can be used to evaluate the average time
+your loop or piece of code is taking to complete it's run.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}220}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{timeit}
+          \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{0}   \PY{c}{\PYZsh{} setup}
+          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{l+m+mi}{100000}\PY{p}{)}\PY{p}{:}    \PY{c}{\PYZsh{}lets use range here}
+              \PY{n}{x} \PY{o}{=} \PY{n}{x} \PY{o}{+} \PY{n}{i}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+              \PY{n}{x} \PY{o}{=} \PY{n}{x} \PY{o}{+} \PY{n}{i}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+              
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10 loops, best of 3: 21 ms per loop
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}221}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{timeit}
+          \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{0}   \PY{c}{\PYZsh{} setup}
+          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{l+m+mi}{100000}\PY{p}{)}\PY{p}{:}   \PY{c}{\PYZsh{}replace range with slightly improved xrange}
+              \PY{n}{x} \PY{o}{+}\PY{o}{=} \PY{n}{i}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 10.6 ms per loop
+    \end{Verbatim}
+
+    \subsection{Know when the kernel is busy}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Have a look at the top right hand side of the notebook and run the
+  code cell above again.
+\item
+  This shows that the kernel is busy running the current cell.
+\end{itemize}
+
+    \subsection{Running shell commands}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  I now use IPython as my default shell scripting language
+\item
+  lets put the contents of the current directory into a list
+\item
+  the \texttt{!} before a command indicates that you want to run a
+  system command.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}225}]:} \PY{n}{filelist} \PY{o}{=} \PY{err}{!}\PY{n}{ls}                     \PY{c}{\PYZsh{}read the current directory into variable}
+          
+          
+          \PY{n}{d} \PY{o}{=}\PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+          \PY{k}{for} \PY{n}{x}\PY{p}{,}\PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{filelist}\PY{p}{)}\PY{p}{:}
+              \PY{c}{\PYZsh{}print \PYZsq{}\PYZsh{}\PYZsq{},x, \PYZsq{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZgt{}\PYZsq{}, i}
+              \PY{n}{key} \PY{o}{=} \PY{n}{i}\PY{p}{[}\PY{n}{i}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{.}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{:}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{]}
+              \PY{k}{if} \PY{n}{d}\PY{o}{.}\PY{n}{has\PYZus{}key}\PY{p}{(}\PY{n}{key}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{d}\PY{p}{[}\PY{n}{i}\PY{p}{[}\PY{n}{i}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{.}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{:}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{]}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+              \PY{k}{else}\PY{p}{:}
+                  \PY{n}{d}\PY{p}{[}\PY{n}{i}\PY{p}{[}\PY{n}{i}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{.}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{:}\PY{n+nb}{len}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
+              
+          
+          \PY{k}{for} \PY{n}{key} \PY{o+ow}{in} \PY{n}{d}\PY{p}{:}
+              \PY{k}{print} \PY{n}{key}\PY{p}{,} \PY{n}{d}\PY{p}{[}\PY{n}{key}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+md 1
+py 1
+jpg 1
+json 1
+ipynb 2
+css 1
+pdf 1
+csv 1
+png 9
+    \end{Verbatim}
+
+    \subsection{Embedding Images}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Images can be added programatically
+\item
+  or by adding inline HTML
+\item
+  this slide shows inline html (double click to show)
+\item
+  next slide will use Pyton syntax to add it
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}146}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{Image}
+          \PY{n}{Image}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{insightstack2.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}146}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_27_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \subsection{Adding YouYube videos}
+
+You can also add rich media like Youtube Videos into the notebook
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}147}]:} \PY{c}{\PYZsh{}you can embed the HTML or programatically add it.}
+          \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{YouTubeVideo}
+          \PY{n}{YouTubeVideo}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{iwVvqwLDsJo}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+m+mi}{600}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}147}]:} <IPython.lib.display.YouTubeVideo at 0x11a8f0510>
+\end{Verbatim}
+        
+    \subsection{Plotting with Matplotlib}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  matplotlib is a python 2D plotting library
+\item
+  produces publication quality figures
+\item
+  variety of hardcopy formats and interactive environments across
+  platforms
+\item
+  matplotlib can be used in
+\item
+  python scripts,
+\item
+  the python and ipython shell,
+\item
+  web application servers,
+\item
+  graphical user interface toolkits.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}178}]:} \PY{k+kn}{from} \PY{n+nn}{matplotlib.pylab} \PY{k+kn}{import} \PY{n}{xkcd}
+          \PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k+kn}{import} \PY{o}{*}
+          
+          \PY{c}{\PYZsh{}generate some data}
+          \PY{n}{n} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}
+          \PY{n}{xx} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.75}\PY{p}{,} \PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+          \PY{n}{x} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+          \PY{n}{y} \PY{o}{=} \PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}
+          
+          \PY{n}{fig}\PY{p}{,} \PY{n}{axes} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{xx}\PY{p}{,} \PY{n}{xx} \PY{o}{+} \PY{l+m+mf}{0.25}\PY{o}{*}\PY{n}{randn}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{xx}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{scatter}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{step}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{n}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{step}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{n}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{align}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{center}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{bar}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{fill\PYZus{}between}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{;}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{fill}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          
+          \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+              \PY{n}{axes}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{y}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_31_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Combined plots}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Matplotlib allows plots to be combined
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}179}]:} \PY{c}{\PYZsh{}CustomPlot()}
+          \PY{n}{font\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{20}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mf}{11.5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)} 
+          \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+          
+          \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xx}\PY{p}{,} \PY{n}{xx}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{xx}\PY{p}{,} \PY{n}{xx}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{Combined Plot \PYZdl{}y=x\PYZca{}2\PYZdl{} vs. \PYZdl{}y=x\PYZca{}3\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}x\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}y\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{fig}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+          \PY{c}{\PYZsh{} inset}
+          \PY{n}{inset\PYZus{}ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}axes}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{0.29}\PY{p}{,} \PY{l+m+mf}{0.45}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{,} \PY{l+m+mf}{0.35}\PY{p}{]}\PY{p}{)} \PY{c}{\PYZsh{} X, Y, width, height}
+          \PY{n}{inset\PYZus{}ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xx}\PY{p}{,} \PY{n}{xx}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{xx}\PY{p}{,} \PY{n}{xx}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}
+          \PY{n}{inset\PYZus{}ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{zoom \PYZdl{}x=0\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize}\PY{o}{=}\PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{c}{\PYZsh{} set axis range}
+          \PY{n}{inset\PYZus{}ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{o}{.}\PY{l+m+mi}{2}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{2}\PY{p}{)}
+          \PY{n}{inset\PYZus{}ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{o}{.}\PY{l+m+mo}{005}\PY{p}{,} \PY{o}{.}\PY{l+m+mo}{01}\PY{p}{)}
+          \PY{c}{\PYZsh{} set axis tick locations}
+          \PY{n}{inset\PYZus{}ax}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{0.005}\PY{p}{,} \PY{l+m+mf}{0.01}\PY{p}{]}\PY{p}{)}
+          \PY{n}{inset\PYZus{}ax}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{;}
+          \PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_33_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Adding text to a plot}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}181}]:} \PY{c}{\PYZsh{}CustomPlot()}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)} 
+          \PY{n}{font\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{20}
+          \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xx}\PY{p}{,} \PY{n}{xx}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{xx}\PY{p}{,} \PY{n}{xx}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}x\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}y\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{Adding Text \PYZdl{}y=x\PYZca{}2\PYZdl{} vs. \PYZdl{}y=x\PYZca{}3\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mf}{0.15}\PY{p}{,} \PY{l+m+mf}{0.2}\PY{p}{,} \PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}y=x\PYZca{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{n}{font\PYZus{}size}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mf}{0.65}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}y=x\PYZca{}3\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{n}{font\PYZus{}size}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_35_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{xkcd style plotting}
+
+\href{http://matplotlib.org/xkcd/examples/showcase/xkcd.html}{matplolib
+v1.3} now includes a setting to make plots resemple xkcd styles.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}151}]:} \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k+kn}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+          
+          
+          \PY{k}{with} \PY{n}{plt}\PY{o}{.}\PY{n}{xkcd}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+              \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{spines}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{right}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}color}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{none}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{spines}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{top}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}color}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{none}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{)}
+          
+              \PY{n}{data} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{)}
+              \PY{n}{data}\PY{p}{[}\PY{l+m+mi}{70}\PY{p}{:}\PY{p}{]} \PY{o}{\PYZhy{}}\PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{30}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}
+                  \PY{l+s}{\PYZsq{}}\PY{l+s}{THE DAY I REALIZED}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{I COULD COOK BACON}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{WHENEVER I WANTED}\PY{l+s}{\PYZsq{}}\PY{p}{,}
+                  \PY{n}{xy}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n}{arrowprops}\PY{o}{=}\PY{n+nb}{dict}\PY{p}{(}\PY{n}{arrowstyle}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}\PYZgt{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,} \PY{n}{xytext}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{data}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{time}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{my overall health}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          
+              \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+              \PY{n}{ax} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.125}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.125}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{spines}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{right}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}color}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{none}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{spines}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{top}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}color}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{none}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{xaxis}\PY{o}{.}\PY{n}{set\PYZus{}ticks\PYZus{}position}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{bottom}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xticks}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{110}\PY{p}{]}\PY{p}{)}
+              \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xticklabels}\PY{p}{(}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{CONFIRMED BY}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{EXPERIMENT}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{REFUTED BY}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{EXPERIMENT}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{yticks}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{CLAIMS OF SUPERNATURAL POWERS}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_37_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_37_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Symbolic math using SymPy}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  SymPy is a Python library for symbolic mathematics.
+\item
+  It aims to become a full-featured computer algebra system (CAS) while
+  keeping the code as simple as possible in order to be comprehensible
+  and easily extensible.
+\item
+  SymPy is written entirely in Python and does not require any external
+  libraries.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}152}]:} \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{o}{*}
+          \PY{n}{init\PYZus{}printing}\PY{p}{(}\PY{n}{use\PYZus{}latex}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+          \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{solve}
+          \PY{n}{x} \PY{o}{=} \PY{n}{Symbol}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{y} \PY{o}{=} \PY{n}{Symbol}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{y}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{series}\PY{p}{(}\PY{n}{exp}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}152}]:}
+    
+    
+        \begin{equation*}
+        e + e x + \frac{e x^{2}}{2} + \frac{e x^{3}}{6} + \frac{e x^{4}}{24} + \mathcal{O}\left(x^{5}\right)
+        \end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}153}]:} \PY{n}{eq} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{n}{x}\PY{o}{+}\PY{n}{y}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{*} \PY{p}{(}\PY{n}{x}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+          \PY{n}{eq}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}153}]:}
+    
+    
+        \begin{equation*}
+        \left(x + 1\right) \left(x + y\right)^{2}
+        \end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}154}]:} \PY{n}{solve}\PY{p}{(}\PY{n}{eq}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}154}]:}
+    
+    
+        \begin{equation*}
+        \begin{bmatrix}\begin{Bmatrix}x : -1\end{Bmatrix}, & \begin{Bmatrix}x : - y\end{Bmatrix}\end{bmatrix}
+        \end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}155}]:} \PY{n}{a} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{x} \PY{o}{+} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{o}{/}\PY{n}{x}
+          \PY{n}{a}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}155}]:}
+    
+    
+        \begin{equation*}
+        \frac{1}{x} \left(x \sin{\left (x \right )} - 1\right) + \frac{1}{x}
+        \end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}156}]:} \PY{n}{simplify}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}156}]:}
+    
+    
+        \begin{equation*}
+        \sin{\left (x \right )}
+        \end{equation*}
+
+    
+
+    \subsection{Data analysis using the Pandas library}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{pandas.png}
+\end{figure}
+
+\begin{itemize}
+\item
+  pandas is a Python package providing fast, flexible, and expressive
+  data structures designed to make working with ``relational'' or
+  ``labeled'' data both easy and intuitive
+\item
+  The two primary data structures of pandas
+\item
+  Series (1-dimensional) and
+\item
+  DataFrame (2-dimensional) handle the vast majority of typical use
+  cases in finance, statistics, social science, and many areas of
+  engineering.
+\item
+  For R users, DataFrame provides everything that R's data.frame
+  provides.
+\item
+  pandas is built on top of NumPy and is intended to integrate well
+  within a scientific computing environment with many other 3rd party
+  libraries.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}157}]:} \PY{k+kn}{from} \PY{n+nn}{pandas} \PY{k+kn}{import} \PY{n}{DataFrame}\PY{p}{,} \PY{n}{read\PYZus{}csv}
+          
+          \PY{n}{Cape\PYZus{}Weather} \PY{o}{=} \PY{n}{DataFrame}\PY{p}{(} \PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{CapeTown\PYZus{}2009\PYZus{}Temperatures.csv}\PY{l+s}{\PYZsq{}} \PY{p}{)}\PY{p}{)}
+          \PY{n}{Cape\PYZus{}Weather}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}157}]:}    high  low  radiation
+          0    25   16       29.0
+          1    23   15       25.7
+          2    25   15       21.5
+          3    26   16       15.2
+          4    26   17       10.8
+          
+          [5 rows x 3 columns]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}191}]:} \PY{c}{\PYZsh{}CustomPlot()}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+          \PY{n}{font\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{24}
+          \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Cape Town temparature(2009)}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Day number}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{Temperature [\PYZdl{}\PYZca{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{circ C\PYZdl{}] }\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{Cape\PYZus{}Weather}\PY{o}{.}\PY{n}{high}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+          \PY{n}{Cape\PYZus{}Weather}\PY{o}{.}\PY{n}{low}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+          \PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_46_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}198}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
+          \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+          \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+          \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{normal}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}\PY{p}{)}
+          \PY{n}{color}\PY{p}{,} \PY{n}{size} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{color}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{500} \PY{o}{*} \PY{n}{size}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{)}
+          \PY{n}{ax}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{lightgray}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.7}\PY{p}{)}
+          
+          \PY{k+kn}{import} \PY{n+nn}{mpld3}
+          \PY{n}{mpld3}\PY{o}{.}\PY{n}{display}\PY{p}{(}\PY{n}{fig}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}198}]:} <IPython.core.display.HTML at 0x106da5390>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}195}]:} \PY{c}{\PYZsh{}CustomPlot()}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}
+          \PY{n}{font\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{24}
+          \PY{n}{title}\PY{p}{(} \PY{l+s}{\PYZsq{}}\PY{l+s}{Mean solar radiation(horisontal plane)}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Month Number}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}MJ / day / m\PYZca{}2\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{Cape\PYZus{}Weather}\PY{o}{.}\PY{n}{radiation}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{)}
+          \PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_48_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}161}]:} \PY{c}{\PYZsh{} lets look at a proxy for heating degree and cooling degree days}
+          \PY{n}{level} \PY{o}{=} \PY{l+m+mi}{25}
+          \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Days warmer than}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{level}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{=}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{Cape\PYZus{}Weather}\PY{p}{[} \PY{n}{Cape\PYZus{}Weather}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{high}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{n}{level}  \PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{high}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+          \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Days cooler than}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{level}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{=}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{Cape\PYZus{}Weather}\PY{p}{[} \PY{n}{Cape\PYZus{}Weather}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{high}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{level} \PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{high}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Days warmer than 25 = 59
+Days cooler than 25 = 306
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}162}]:} \PY{c}{\PYZsh{} Basic descriptive statistics}
+          \PY{k}{print} \PY{n}{Cape\PYZus{}Weather}\PY{o}{.}\PY{n}{high}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+count    365.000000
+mean      21.545205
+std        4.764943
+min       12.000000
+25\%       18.000000
+50\%       21.000000
+75\%       25.000000
+max       36.000000
+Name: high, dtype: float64
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/Users/tobie/anaconda/lib/python2.7/site-packages/pandas/compat/scipy.py:68: DeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  score = values[idx]
+/Users/tobie/anaconda/lib/python2.7/site-packages/pandas/compat/scipy.py:68: DeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
+  score = values[idx]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}194}]:} \PY{c}{\PYZsh{}CustomPlot()}
+          \PY{n}{figsize}\PY{p}{(}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{)}
+          \PY{n}{font\PYZus{}size} \PY{o}{=} \PY{l+m+mi}{24}
+          \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Cape Town temperature distribution}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Day count}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{Temperature [\PYZdl{}\PYZca{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{circ C \PYZdl{}] }\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{fontsize} \PY{o}{=} \PY{n}{font\PYZus{}size}\PY{p}{)}
+          \PY{n}{Cape\PYZus{}Weather}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{high}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{)}
+          \PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_51_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Typesetting}
+
+\subsubsection{Latex}
+
+Latex is rendered using the mathjax javascript library
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}164}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{Math}
+          \PY{n}{Math}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{F(k) = }\PY{l+s}{\PYZbs{}}\PY{l+s}{int\PYZus{}\PYZob{}\PYZhy{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{infty\PYZcb{}\PYZca{}\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{infty\PYZcb{} f(x) e\PYZca{}\PYZob{}2}\PY{l+s}{\PYZbs{}}\PY{l+s}{pi i k\PYZcb{} dx}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}164}]:}
+    
+    
+        \begin{equation*}
+        F(k) = \int_{-\infty}^{\infty} f(x) e^{2\pi i k} dx
+        \end{equation*}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}165}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{Latex}
+          \PY{n}{Latex}\PY{p}{(}\PY{l+s}{r\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{begin\PYZob{}eqnarray\PYZcb{}}
+          \PY{l+s}{\PYZbs{}}\PY{l+s}{nabla }\PY{l+s}{\PYZbs{}}\PY{l+s}{times }\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}B\PYZcb{}\PYZcb{} \PYZhy{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{, }\PY{l+s}{\PYZbs{}}\PY{l+s}{frac1c}\PY{l+s}{\PYZbs{}}\PY{l+s}{, }\PY{l+s}{\PYZbs{}}\PY{l+s}{frac\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{partial}\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}E\PYZcb{}\PYZcb{}\PYZcb{}\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{partial t\PYZcb{} \PYZam{} = }\PY{l+s}{\PYZbs{}}\PY{l+s}{frac\PYZob{}4}\PY{l+s}{\PYZbs{}}\PY{l+s}{pi\PYZcb{}\PYZob{}c\PYZcb{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}j\PYZcb{}\PYZcb{} }\PY{l+s}{\PYZbs{}}\PY{l+s}{\PYZbs{}}
+          \PY{l+s}{\PYZbs{}}\PY{l+s}{nabla }\PY{l+s}{\PYZbs{}}\PY{l+s}{cdot }\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}E\PYZcb{}\PYZcb{} \PYZam{} = 4 }\PY{l+s}{\PYZbs{}}\PY{l+s}{pi }\PY{l+s}{\PYZbs{}}\PY{l+s}{rho }\PY{l+s}{\PYZbs{}}\PY{l+s}{\PYZbs{}}
+          \PY{l+s}{\PYZbs{}}\PY{l+s}{nabla }\PY{l+s}{\PYZbs{}}\PY{l+s}{times }\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}E\PYZcb{}\PYZcb{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{, +}\PY{l+s}{\PYZbs{}}\PY{l+s}{, }\PY{l+s}{\PYZbs{}}\PY{l+s}{frac1c}\PY{l+s}{\PYZbs{}}\PY{l+s}{, }\PY{l+s}{\PYZbs{}}\PY{l+s}{frac\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{partial}\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}B\PYZcb{}\PYZcb{}\PYZcb{}\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{partial t\PYZcb{} \PYZam{} = }\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}0\PYZcb{}\PYZcb{} }\PY{l+s}{\PYZbs{}}\PY{l+s}{\PYZbs{}}
+          \PY{l+s}{\PYZbs{}}\PY{l+s}{nabla }\PY{l+s}{\PYZbs{}}\PY{l+s}{cdot }\PY{l+s}{\PYZbs{}}\PY{l+s}{vec\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mathbf\PYZob{}B\PYZcb{}\PYZcb{} \PYZam{} = 0 }
+          \PY{l+s}{\PYZbs{}}\PY{l+s}{end\PYZob{}eqnarray\PYZcb{}}\PY{l+s}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}165}]:}
+    
+    \begin{eqnarray}
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} & = \frac{4\pi}{c}\vec{\mathbf{j}} \\
+\nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+\nabla \cdot \vec{\mathbf{B}} & = 0 
+\end{eqnarray}
+
+    
+
+    \subsection{Saving a Gist}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  It is possible to save spesific lines of code to a GitHub gist.
+\item
+  This is achieved with the \texttt{\%pastebin} magic as demonstrated
+  below.
+\item
+  This makes sharing code easy!
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}166}]:} \PY{o}{\PYZpc{}}\PY{k}{pastebin} \PY{l+s}{\PYZdq{}}\PY{l+s}{cell one}\PY{l+s}{\PYZdq{}} \PY{l+m+mi}{0}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}166}]:} u'https://gist.github.com/cc2fc1ba86271ea4eb8b'
+\end{Verbatim}
+        
+    \subsection{Connect to this kernel remotely}
+
+Using the \texttt{\%connect\_info} magic you can obtain the connection
+info to connect to this workbook from another ipython console or
+qtconsole using :
+
+\begin{verbatim}
+ipython qtconsole --existing
+\end{verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}217}]:} \PY{o}{\PYZpc{}}\PY{k}{connect\PYZus{}info}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\{
+  "stdin\_port": 65444, 
+  "ip": "127.0.0.1", 
+  "control\_port": 65445, 
+  "hb\_port": 65446, 
+  "signature\_scheme": "hmac-sha256", 
+  "key": "14f870f3-d3b2-4a17-8af5-33a53ba833bd", 
+  "shell\_port": 65442, 
+  "transport": "tcp", 
+  "iopub\_port": 65443
+\}
+
+Paste the above JSON into a file, and connect with:
+    \$> ipython <app> --existing <file>
+or, if you are local, you can connect with just:
+    \$> ipython <app> --existing kernel-9cbd9f51-5f50-4852-9c92-a9bbca5e2ad9.json 
+or even just:
+    \$> ipython <app> --existing 
+if this is the most recent IPython session you have started.
+    \end{Verbatim}
+
+                # New in IPYTHON 2.0 Interactive Widgets
+                
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}168}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.html.widgets} \PY{k+kn}{import} \PY{n}{interact}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{networkx} \PY{k+kn}{as} \PY{n+nn}{nx}
+          
+          \PY{c}{\PYZsh{} wrap a few graph generation functions so they have the same signature}
+          
+          \PY{k}{def} \PY{n+nf}{random\PYZus{}lobster}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{nx}\PY{o}{.}\PY{n}{random\PYZus{}lobster}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{p}\PY{p}{,} \PY{n}{p} \PY{o}{/} \PY{n}{m}\PY{p}{)}
+          
+          \PY{k}{def} \PY{n+nf}{powerlaw\PYZus{}cluster}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{nx}\PY{o}{.}\PY{n}{powerlaw\PYZus{}cluster\PYZus{}graph}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+          
+          \PY{k}{def} \PY{n+nf}{erdos\PYZus{}renyi}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{nx}\PY{o}{.}\PY{n}{erdos\PYZus{}renyi\PYZus{}graph}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+          
+          \PY{k}{def} \PY{n+nf}{newman\PYZus{}watts\PYZus{}strogatz}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{nx}\PY{o}{.}\PY{n}{newman\PYZus{}watts\PYZus{}strogatz\PYZus{}graph}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+          
+          \PY{k}{def} \PY{n+nf}{plot\PYZus{}random\PYZus{}graph}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{,} \PY{n}{generator}\PY{p}{)}\PY{p}{:}
+              \PY{n}{g} \PY{o}{=} \PY{n}{generator}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+              \PY{n}{nx}\PY{o}{.}\PY{n}{draw}\PY{p}{(}\PY{n}{g}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}199}]:} \PY{n}{interact}\PY{p}{(}\PY{n}{plot\PYZus{}random\PYZus{}graph}\PY{p}{,} \PY{n}{n}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{30}\PY{p}{)}\PY{p}{,} \PY{n}{m}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{0.001}\PY{p}{)}\PY{p}{,}
+                  \PY{n}{generator}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{lobster}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{random\PYZus{}lobster}\PY{p}{,}
+                             \PY{l+s}{\PYZsq{}}\PY{l+s}{power law}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{powerlaw\PYZus{}cluster}\PY{p}{,}
+                             \PY{l+s}{\PYZsq{}}\PY{l+s}{Newman\PYZhy{}Watts\PYZhy{}Strogatz}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{newman\PYZus{}watts\PYZus{}strogatz}\PY{p}{,}
+                             \PY{l+s}{u\PYZsq{}}\PY{l+s}{Erdős\PYZhy{}Rényi}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n}{erdos\PYZus{}renyi}\PY{p}{,}
+                             \PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_61_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}207}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.html.widgets} \PY{k+kn}{import} \PY{n}{interact}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+          
+          \PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+          
+          \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}
+          \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{normal}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+          \PY{n}{s}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}\PY{p}{)}
+              
+          \PY{k}{def} \PY{n+nf}{draw\PYZus{}scatter}\PY{p}{(}\PY{n}{size}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{jet}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{1.0}\PY{p}{)}\PY{p}{:}
+              \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+              \PY{n}{points} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{n}{size}\PY{o}{*}\PY{n}{s}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{n}{c}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{n}{alpha}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{cmap}\PY{p}{)}
+              \PY{n}{fig}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{points}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{)}
+              \PY{k}{return} \PY{n}{fig}
+          
+          \PY{n}{colormaps} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{m} \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n}{plt}\PY{o}{.}\PY{n}{cm}\PY{o}{.}\PY{n}{datad} \PY{k}{if} \PY{o+ow}{not} \PY{n}{m}\PY{o}{.}\PY{n}{endswith}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZus{}r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}210}]:} \PY{n}{interact}\PY{p}{(}
+                      \PY{n}{draw\PYZus{}scatter}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2000}\PY{p}{]}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{]}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{colormaps}
+                  \PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_63_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \section{Machine Learning with Sci-Kit Learn}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{scikit.jpg}
+\end{figure}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}172}]:} \PY{k+kn}{import} \PY{n+nn}{pylab} \PY{k+kn}{as} \PY{n+nn}{pl}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+          
+          \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{AdaBoostClassifier}
+          \PY{k+kn}{from} \PY{n+nn}{sklearn.tree} \PY{k+kn}{import} \PY{n}{DecisionTreeClassifier}
+          \PY{k+kn}{from} \PY{n+nn}{sklearn.datasets} \PY{k+kn}{import} \PY{n}{make\PYZus{}gaussian\PYZus{}quantiles}
+          
+          
+          \PY{c}{\PYZsh{} Construct dataset}
+          \PY{n}{X1}\PY{p}{,} \PY{n}{y1} \PY{o}{=} \PY{n}{make\PYZus{}gaussian\PYZus{}quantiles}\PY{p}{(}\PY{n}{cov}\PY{o}{=}\PY{l+m+mf}{2.}\PY{p}{,}
+                                           \PY{n}{n\PYZus{}samples}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,} \PY{n}{n\PYZus{}features}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,}
+                                           \PY{n}{n\PYZus{}classes}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+          \PY{n}{X2}\PY{p}{,} \PY{n}{y2} \PY{o}{=} \PY{n}{make\PYZus{}gaussian\PYZus{}quantiles}\PY{p}{(}\PY{n}{mean}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{cov}\PY{o}{=}\PY{l+m+mf}{1.5}\PY{p}{,}
+                                           \PY{n}{n\PYZus{}samples}\PY{o}{=}\PY{l+m+mi}{300}\PY{p}{,} \PY{n}{n\PYZus{}features}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,}
+                                           \PY{n}{n\PYZus{}classes}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+          \PY{c}{\PYZsh{}Training Samples}
+          \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{(}\PY{n}{X1}\PY{p}{,} \PY{n}{X2}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{}Training Target}
+          \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{(}\PY{n}{y1}\PY{p}{,} \PY{o}{\PYZhy{}} \PY{n}{y2} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} Create and fit an AdaBoosted decision tree}
+          \PY{n}{bdt} \PY{o}{=} \PY{n}{AdaBoostClassifier}\PY{p}{(}
+                                    \PY{n}{DecisionTreeClassifier}\PY{p}{(} \PY{n}{max\PYZus{}depth}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}
+                                                            \PY{n}{algorithm}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{SAMME}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                                                            \PY{n}{n\PYZus{}estimators}\PY{o}{=}\PY{l+m+mi}{200}
+                                  \PY{p}{)}
+          
+          \PY{n}{bdt}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+          
+          \PY{n}{plot\PYZus{}colors} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{br}\PY{l+s}{\PYZdq{}}
+          \PY{n}{plot\PYZus{}step} \PY{o}{=} \PY{l+m+mf}{0.02}
+          \PY{n}{class\PYZus{}names} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{AB}\PY{l+s}{\PYZdq{}}
+          
+          \PY{n}{pl}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} Plot the decision boundaries}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{121}\PY{p}{)}
+          \PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}
+          \PY{n}{y\PYZus{}min}\PY{p}{,} \PY{n}{y\PYZus{}max} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}
+          \PY{n}{xx}\PY{p}{,} \PY{n}{yy} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max}\PY{p}{,} \PY{n}{plot\PYZus{}step}\PY{p}{)}\PY{p}{,}
+                               \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{y\PYZus{}min}\PY{p}{,} \PY{n}{y\PYZus{}max}\PY{p}{,} \PY{n}{plot\PYZus{}step}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n}{Z} \PY{o}{=} \PY{n}{bdt}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{c\PYZus{}}\PY{p}{[}\PY{n}{xx}\PY{o}{.}\PY{n}{ravel}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{yy}\PY{o}{.}\PY{n}{ravel}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+          \PY{n}{Z} \PY{o}{=} \PY{n}{Z}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{xx}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+          \PY{n}{cs} \PY{o}{=} \PY{n}{pl}\PY{o}{.}\PY{n}{contourf}\PY{p}{(}\PY{n}{xx}\PY{p}{,} \PY{n}{yy}\PY{p}{,} \PY{n}{Z}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{pl}\PY{o}{.}\PY{n}{cm}\PY{o}{.}\PY{n}{Paired}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{tight}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} Plot the training points}
+          \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{class\PYZus{}names}\PY{p}{,} \PY{n}{plot\PYZus{}colors}\PY{p}{)}\PY{p}{:}
+              \PY{n}{idx} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{n}{y} \PY{o}{==} \PY{n}{i}\PY{p}{)}
+              \PY{n}{pl}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{n}{idx}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{X}\PY{p}{[}\PY{n}{idx}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+                         \PY{n}{c}\PY{o}{=}\PY{n}{c}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{pl}\PY{o}{.}\PY{n}{cm}\PY{o}{.}\PY{n}{Paired}\PY{p}{,}
+                         \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Class }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{n}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{n}{x\PYZus{}min}\PY{p}{,} \PY{n}{x\PYZus{}max}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{n}{y\PYZus{}min}\PY{p}{,} \PY{n}{y\PYZus{}max}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{upper right}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Decision Boundary}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          
+          \PY{c}{\PYZsh{} Plot the two\PYZhy{}class decision scores}
+          \PY{n}{twoclass\PYZus{}output} \PY{o}{=} \PY{n}{bdt}\PY{o}{.}\PY{n}{decision\PYZus{}function}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+          \PY{n}{plot\PYZus{}range} \PY{o}{=} \PY{p}{(}\PY{n}{twoclass\PYZus{}output}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{twoclass\PYZus{}output}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{122}\PY{p}{)}
+          \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{class\PYZus{}names}\PY{p}{,} \PY{n}{plot\PYZus{}colors}\PY{p}{)}\PY{p}{:}
+              \PY{n}{pl}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{twoclass\PYZus{}output}\PY{p}{[}\PY{n}{y} \PY{o}{==} \PY{n}{i}\PY{p}{]}\PY{p}{,}
+                      \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,}
+                      \PY{n+nb}{range}\PY{o}{=}\PY{n}{plot\PYZus{}range}\PY{p}{,}
+                      \PY{n}{facecolor}\PY{o}{=}\PY{n}{c}\PY{p}{,}
+                      \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Class }\PY{l+s+si}{\PYZpc{}s}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{n}{n}\PY{p}{,}
+                      \PY{n}{alpha}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
+          \PY{n}{x1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{y2} \PY{o}{=} \PY{n}{pl}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{p}{(}\PY{n}{x1}\PY{p}{,} \PY{n}{x2}\PY{p}{,} \PY{n}{y1}\PY{p}{,} \PY{n}{y2} \PY{o}{*} \PY{l+m+mf}{1.2}\PY{p}{)}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{upper right}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Samples}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Decision Scores}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{wspace}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{)}
+          \PY{n}{pl}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{csir_ipython_files/csir_ipython_65_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Publishing your Work}
+
+Newly added in the 1.0 release of IPython is the nbconvert tool, which
+allows you to convert an \texttt{.ipynb} notebook document file into
+various static formats.
+
+Currently, nbconvert is provided as a command line tool, run as a script
+using IPython. A direct export capability from within the IPython
+Notebook web app is planned.
+
+The command-line syntax to run the nbconvert script is:
+\href{http://ipython.org/ipython-doc/rel-1.0.0/interactive/nbconvert.html}{MORE
+OPTIONS}
+
+\begin{verbatim}
+ipython nbconvert --to FORMAT notebook.ipynb
+\end{verbatim}
+
+This page is converted and published to the following formats using this
+tool:
+
+\begin{itemize}
+\item
+  HTML
+\item
+  PDF (the PDF is created using \texttt{wkhtml2pdf} that takes the html
+  file as an input)
+\item
+  LATEX
+\item
+  \texttt{Reveal.js} slideshow
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}173}]:} \PY{n}{website}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{www.insightstack.co.za}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+m+mi}{600}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}173}]:} <IPython.core.display.HTML at 0x10648c550>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}174}]:} \PY{n}{website}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{http://www.pyzo.org/python\PYZus{}vs\PYZus{}matlab.html}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+m+mi}{600}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}174}]:} <IPython.core.display.HTML at 0x10648c110>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}175}]:} \PY{n}{website}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{https://www.pythonanywhere.com/try\PYZhy{}ipython/}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{width}\PY{o}{=}\PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+m+mi}{600}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}175}]:} <IPython.core.display.HTML at 0x10648c150>
+\end{Verbatim}
+        
+    \section{THANK YOU FOR YOUR TIME}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
